@@ -1,0 +1,414 @@
+*pastel.nvim.txt*    Pastel colorscheme plugin for Neovim
+
+Author: Ankush Bhagat
+License: GNU GPL v3
+
+==============================================================================
+CONTENTS                                                   *pastel-contents*
+
+1. Introduction.................................|pastel-introduction|
+2. Features....................................|pastel-features|
+3. Installation................................|pastel-installation|
+4. Usage.......................................|pastel-usage|
+5. Configuration...............................|pastel-configuration|
+6. Colors......................................|pastel-colors|
+7. Highlights..................................|pastel-highlights|
+8. Style System................................|pastel-style|
+9. Filetype Config.............................|pastel-filetypes|
+10. Exclude System.............................|pastel-exclude|
+11. Colorschemes...............................|pastel-colorschemes|
+12. Plugin Support.............................|pastel-plugins|
+13. Examples...................................|pastel-examples|
+14. Notes......................................|pastel-notes|
+15. Contributing...............................|pastel-contributing|
+16. License....................................|pastel-license|
+
+==============================================================================
+
+1. INTRODUCTION                                       *pastel-introduction*
+
+pastel.nvim is a modern Neovim colorscheme plugin featuring
+beautifully crafted pastel themes with rich customization,
+plugin integrations, and flexible styling.
+
+==============================================================================
+
+2. FEATURES                                             *pastel-features*
+
+- 20 pastel colorschemes
+- Automatic dark/light background switching
+- Built-in highlights for popular plugins
+- Fully customizable colors, highlights, and styles
+- Lightweight and fast
+- Per-filetype configuration support
+- Fine-grained exclusion system
+
+==============================================================================
+
+3. INSTALLATION                                       *pastel-installation*
+
+Using lazy.nvim: >
+
+    {
+      "ankushbhagats/pastel.nvim",
+      lazy = false,
+      priority = 1000,
+      config = function()
+        require("pastel").setup()
+      end,
+    }
+
+Using packer.nvim: >
+
+    use {
+      "ankushbhagats/pastel.nvim",
+      config = function()
+        require("pastel").setup()
+      end
+    }
+
+==============================================================================
+
+4. USAGE                                               *pastel-usage*
+
+Apply a colorscheme: >
+
+    :colorscheme pasteldark
+
+==============================================================================
+
+5. CONFIGURATION                                      *pastel-configuration*
+
+Default configuration: >
+
+    require("pastel").setup({
+      background = {
+        dark = "pasteldark",
+        light = "pastelsoft",
+      },
+      palette = false,
+      termguicolors = true,
+      style = {
+        transparent = false,
+        inactive = true,
+        border = true,
+        float = true,
+        bold = true,
+        italic = false,
+        underline = true,
+        invert_title = false,
+        simple_syntax = false,
+        dynamic_statusline = false,
+      },
+      colors = {
+        common = {},
+        global = {},
+      },
+      highlights = {
+        global = {},
+      },
+      exclude = {
+        core = {},
+        plugins = {},
+      },
+      filetypes = {},
+    })
+
+==============================================================================
+
+6. COLORS                                               *pastel-colors*
+
+Customize base colors globally or per colorscheme.
+
+Global colors: >
+
+    colors = {
+      global = {
+        yellow = "#eedd00",
+        cyan = "#aaffff",
+      }
+    }
+
+Per-colorscheme colors: >
+
+    colors = {
+      pasteldark = {
+        blue = "#11aaee",
+        red = "#ffa0a0",
+      }
+    }
+
+==============================================================================
+
+7. HIGHLIGHTS                                         *pastel-highlights*
+
+Highlights accept functions.
+
+Global highlights: >
+
+    highlights = {
+      global = function(hl, c)
+        hl.Normal = { bg = "#333a3b", fg = "#808980" }
+        hl.Comment.italic = true
+      end
+    }
+
+Per-colorscheme highlights: >
+
+    highlights = {
+      pasteldark = function(hl, c)
+        hl.CursorLine.bg = "#302920"
+      end
+    }
+
+==============================================================================
+
+8. STYLE SYSTEM                                         *pastel-style*
+
+Controls UI appearance via the "style" table.
+
+Keys:
+    transparent
+    inactive
+    border
+    float
+    bold
+    italic
+    underline
+    invert_title
+    simple_syntax
+    dynamic_statusline
+
+Special values:
+
+    "*"     apply globally to all highlight groups
+    true    use default behavior
+    false   disable completely
+
+Example: >
+
+    style = {
+      bold = "*",
+      italic = false,
+      underline = true,
+    }
+
+==============================================================================
+
+9. FILETYPE CONFIG                                   *pastel-filetypes*
+
+Apply custom configuration per filetype.
+
+Example: >
+
+    filetypes = {
+      lua = {
+        colors = {
+          purple = "#ffccff",
+        },
+        style = {
+          italic = true,
+        },
+      },
+      markdown = {
+        highlights = function(hl, c)
+          hl.Title.bold = true
+        end,
+      },
+    }
+
+==============================================================================
+
+10. EXCLUDE SYSTEM                                    *pastel-exclude*
+
+Disable specific highlight groups or plugin integrations.
+
+Example: >
+
+    exclude = {
+      core = {
+        syntax = true,
+      },
+      plugins = {
+        telescope = true,
+      },
+    }
+
+==============================================================================
+
+11. COLORSCHEMES                                  *pastel-colorschemes*
+
+Available colorschemes:
+
+    pasteldark
+    pastelnight
+    pastelsoft
+    pastelfrost
+    pastelrose
+    pastelcloud
+    pastelglow
+    pastelshell
+    pastelcool
+    pastelgold
+    pastelsilk
+    pastelcream
+    pastelmint
+    pastelsnow
+    pastelfog
+    pastelpop
+    pastelwarm
+    pastelforest
+    pastelrice
+    pastelwhite
+
+==============================================================================
+
+12. PLUGIN SUPPORT                                   *pastel-plugins*
+
+Total supported plugins: 46
+
+UI & Navigation:
+    aerial
+    bufferline
+    dashboard-nvim
+    neo-tree
+    nvim-tree
+    nvim-window-picker
+    symbols-outline
+    which-key
+
+Search & Motion:
+    fzf
+    hop
+    flash
+    lightspeed
+    telescope
+
+Completion & LSP:
+    coc
+    mason
+    blink-cmp
+    nvim-cmp
+    nvim-navic
+
+Debugging & Testing:
+    neotest
+    nvim-dap
+    nvim-dapui
+
+Git:
+    gitsigns
+    gitgraph
+    neogit
+
+Syntax & Treesitter:
+    treesitter
+    treesitter-context
+    nvim-ts-rainbow
+    nvim-ts-rainbow2
+    rainbow-delimiters
+
+Editing Enhancements:
+    indent-blankline
+    indentmini
+    vim-illuminate
+    vim-visual-multi
+    vimwiki
+    todo-comments
+
+UI Enhancements:
+    noice
+    nvim-notify
+    snacks
+    spotlight
+    render-markdown
+
+Utility:
+    lazy
+    mini
+    miniicons
+    ministarter
+    avante
+    beacon
+
+Disable plugin highlights: >
+
+    require("pastel").setup({
+      exclude = {
+        plugins = {
+          telescope = true,
+          gitsigns = true,
+        },
+      },
+    })
+
+==============================================================================
+
+13. EXAMPLES                                          *pastel-examples*
+
+Minimal setup: >
+
+    require("pastel").setup()
+    vim.cmd("colorscheme pasteldark")
+
+Transparent background: >
+
+    require("pastel").setup({
+      style = {
+        transparent = true,
+      },
+    })
+
+Global bold + italic: >
+
+    require("pastel").setup({
+      style = {
+        bold = "*",
+        italic = "*",
+      },
+    })
+
+Override colors and highlights: >
+
+    require("pastel").setup({
+      colors = {
+        global = {
+          green = "#0d0d0d",
+        },
+      },
+      highlights = {
+        global = function(hl, c)
+          hl.Normal.bg = c.red
+          hl.CursorLine.bg = "#1a1a1a"
+        end,
+      },
+    })
+
+==============================================================================
+
+14. NOTES                                              *pastel-notes*
+
+- Enable 'termguicolors' for best experience
+- Works with both dark and light backgrounds
+- Designed for performance and flexibility
+
+==============================================================================
+
+15. CONTRIBUTING                                  *pastel-contributing*
+
+Contributions are welcome.
+
+Open issues or submit pull requests to:
+- improve themes
+- add plugin integrations
+- enhance features
+
+==============================================================================
+
+16. LICENSE                                           *pastel-license*
+
+GNU General Public License v3
+
+==============================================================================
+
+vim:tw=78:ts=8:ft=help:norl:
