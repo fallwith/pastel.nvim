@@ -1,6 +1,4 @@
 local function callback(c, opts)
-  local color = require "pastel.lib.color"
-  local base = color.new(c.base)
 
   local float_bg = (opts.border and opts.float and opts.inactive and c.float)
     or (opts.border and opts.float and opts.transparent and c.base)
@@ -139,10 +137,10 @@ local function callback(c, opts)
     Added = { fg = c.green },
     Removed = { fg = c.red },
     Changed = { fg = c.orange },
-    DiffAdd = { bg = color.new(c.green):blend(base, 0.75):tohex() },
-    DiffChange = { bg = color.new(c.yellow):blend(base, 0.75):tohex() },
-    DiffDelete = { bg = color.new(c.red):blend(base, 0.75):tohex() },
-    DiffText = { bg = color.new(c.yellow):blend(base, 0.7):tohex() },
+    DiffAdd = { bg = c.blend(c.green, c.base, 0.75) },
+    DiffChange = { bg = c.blend(c.yellow, c.base, 0.75) },
+    DiffDelete = { bg = c.blend(c.red, c.base, 0.75) },
+    DiffText = { bg = c.blend(c.yellow, c.base, 0.7) },
     DiffOldFile = { fg = c.orange },
     DiffNewFile = { fg = c.green },
     DiffFile = { fg = c.blue },

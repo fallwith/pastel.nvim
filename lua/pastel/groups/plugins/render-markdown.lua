@@ -1,5 +1,4 @@
 local function callback(c)
-  local color = require "pastel.lib.color"
 
   return {
     RenderMarkdownH1 = { link = "@markup.heading.1.markdown" },
@@ -11,32 +10,32 @@ local function callback(c)
 
     RenderMarkdownH1Bg = {
       fg = c.purple,
-      bg = color.new(c.purple):blend(color.new(c.base), 0.75):tohex(),
+      bg = c.blend(c.purple, c.base, 0.75),
       bold = true,
     },
     RenderMarkdownH2Bg = {
       fg = c.blue,
-      bg = color.new(c.blue):blend(color.new(c.base), 0.75):tohex(),
+      bg = c.blend(c.blue, c.base, 0.75),
       bold = true,
     },
     RenderMarkdownH3Bg = {
       fg = c.cyan,
-      bg = color.new(c.cyan):blend(color.new(c.base), 0.75):tohex(),
+      bg = c.blend(c.cyan, c.base, 0.75),
       bold = true,
     },
     RenderMarkdownH4Bg = {
       fg = c.green,
-      bg = color.new(c.green):blend(color.new(c.base), 0.75):tohex(),
+      bg = c.blend(c.green, c.base, 0.75),
       bold = true,
     },
     RenderMarkdownH5Bg = {
       fg = c.yellow,
-      bg = color.new(c.yellow):blend(color.new(c.base), 0.75):tohex(),
+      bg = c.blend(c.yellow, c.base, 0.75),
       bold = true,
     },
     RenderMarkdownH6Bg = {
       fg = c.purple,
-      bg = color.new(c.yellow):blend(color.new(c.base), 0.75):tohex(),
+      bg = c.blend(c.yellow, c.base, 0.75),
       bold = true,
     },
 

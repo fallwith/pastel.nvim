@@ -66,10 +66,11 @@ end
 -- Setup and merge palette
 function M.set_palettes(name, opts)
 	local common = require("pastel.palettes.common")
+	local colorlib = require("pastel.lib.color")
 	local palette = require("pastel.palettes." .. name)
 
 	common = vim.tbl_deep_extend("force", common, { common = opts.colors.common } or {})
-	palette = vim.tbl_deep_extend("force", palette, common, opts.colors[name] or {}, opts.colors.global or {})
+	palette = vim.tbl_deep_extend("force", colorlib, palette, common, opts.colors[name] or {}, opts.colors.global or {})
 
 	return palette
 end

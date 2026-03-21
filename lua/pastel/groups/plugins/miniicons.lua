@@ -1,7 +1,6 @@
 local function callback(c)
-  local color = require "pastel.lib.color"
   return {
-    MiniIconsAzure = { fg = color.new(c.blue):lighten(35):tohex() },
+    MiniIconsAzure = { fg = c.lighten(c.blue, 0.35) },
     MiniIconsBlue = { fg = c.blue },
     MiniIconsCyan = { fg = c.cyan },
     MiniIconsGreen = { fg = c.green },

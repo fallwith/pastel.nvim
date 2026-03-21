@@ -6,7 +6,7 @@ License: GNU GPL v3
 ==============================================================================
 CONTENTS                                                   *pastel-contents*
 
-1. Introduction.................................|pastel-introduction|
+1. Introduction................................|pastel-introduction|
 2. Features....................................|pastel-features|
 3. Installation................................|pastel-installation|
 4. Usage.......................................|pastel-usage|
@@ -22,6 +22,7 @@ CONTENTS                                                   *pastel-contents*
 14. Notes......................................|pastel-notes|
 15. Contributing...............................|pastel-contributing|
 16. License....................................|pastel-license|
+17. Credit.....................................|pastel-credit|
 
 ==============================================================================
 
@@ -412,7 +413,7 @@ GNU General Public License v3
 
 ==============================================================================
 
-17. CREDITS                                           *pastel-license*
+17. CREDITS                                           *pastel-credits*
 
 Highlights adapted from AstroTheme. Thanks to the original authors.
 
