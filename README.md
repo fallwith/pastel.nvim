@@ -447,3 +447,6 @@ Feel free to open issues or submit PRs to improve themes, add integrations, or e
 ### 📄 License
 
 GNU General Public License v3
+
+### 📝 Credits
+Highlights adapted from AstroTheme. Thanks to the original authors.
