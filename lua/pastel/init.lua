@@ -84,9 +84,11 @@ end
 vim.api.nvim_create_autocmd("OptionSet", {
 	pattern = "background",
 	callback = function()
-		require("pastel").load()
-		pcall(function()
-			require("lualine").refresh()
+		vim.schedule(function()
+			vim.cmd("colorscheme pastel")
+			pcall(function()
+				require("lualine").refresh()
+			end)
 		end)
 	end,
 })
