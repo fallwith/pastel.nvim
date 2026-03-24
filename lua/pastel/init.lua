@@ -46,7 +46,7 @@ local util = require("pastel.lib.util")
 
 function M.load(name)
 	M.config.theme = M.config.palette or name or M.config.background[vim.o.background]
-  M.config.palette = false -- set false to prevent constant theme every time changing colorscheme via cmd
+	M.config.palette = false -- set false to prevent constant theme every time changing colorscheme via cmd
 
 	if vim.g.colors_name then
 		vim.cmd.highlight("clear")
@@ -79,6 +79,17 @@ function M.load(name)
 		util.set_highlights(ft_highlights, ftopts)
 	end)
 end
+
+-- Auto switch background
+vim.api.nvim_create_autocmd("OptionSet", {
+	pattern = "background",
+	callback = function()
+		require("pastel").load()
+		pcall(function()
+			require("lualine").refresh()
+		end)
+	end,
+})
 
 function M.setup(opts)
 	-- merge config with provided opts
