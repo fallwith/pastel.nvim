@@ -1,12 +1,10 @@
 local M = {}
 
-M.state = {}
-
 -- get list of all highlight files path
-function M.get_highlight_files(path, opts)
+function M.get_highlight_files(PATH, opts)
 	local highlight_paths = {
-		core = path .. "groups/core",
-		plugins = path .. "groups/plugins",
+		core = PATH .. "groups/core",
+		plugins = PATH .. "groups/plugins",
 	}
 
 	local highlight_files = {}
@@ -53,7 +51,8 @@ function M.list_highlights(path, colors, opts)
 end
 
 ---  merge all module highlights into a single table
-function M.get_highlights(path, colors, opts)
+function M.get_highlights(path, opts)
+	local colors = M.set_palettes(opts.theme, opts)
 	local highlights = M.list_highlights(path, colors, opts)
 
 	-- set highlights from a callback function
@@ -96,7 +95,9 @@ function M.apply_global_style(key, hl, opts)
 end
 
 --- Set highlights groups
-function M.set_highlights(highlights, opts)
+function M.set_highlights(path, opts)
+	local highlights = M.get_highlights(path, opts)
+
 	local styles = {
 		"bold",
 		"italic",

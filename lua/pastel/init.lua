@@ -1,6 +1,8 @@
 local M = {}
 
-M.path = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
+local priority = 1
+
+local PATH = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
 
 M.config = {
 	background = {
@@ -35,24 +37,41 @@ M.config = {
 	filetypes = {},
 }
 
-M.settings = {
-	path = M.path,
-	config = M.config,
-	colors = M.colors,
-	highlights = M.highlights,
+M.palettes = {
+	-- Dark
+	"pasteldark",
+	"pastelforest",
+	"pastelmint",
+	"pastelrose",
+	"pastelcream",
+	"pastelcool",
+	"pastelfog",
+	"pastelnight",
+	"pastelpop",
+	"pastelwarm",
+
+	-- Light
+	"pastelsoft",
+	"pastelwhite",
+	"pastelsilk",
+	"pastelsnow",
+	"pastelcloud",
+	"pastelrice",
+	"pastelglow",
+	"pastelgold",
+	"pastelshell",
+	"pastelfrost",
 }
 
-local util = require("pastel.lib.util")
+local function set_colorscheme(name, theme)
+	name = name or "pastel"
 
-function M.load(name)
-	local theme = M.config.palette
-	if not name then
-		theme = theme or M.config.background[vim.o.background]
-	else
-		theme = theme or name
+	if not vim.tbl_contains(M.palettes, theme) then
+		vim.notify(string.format("pastel.nvim: invalid colorscheme: %s", theme))
+		theme = "pasteldark"
 	end
+
 	M.config.theme = theme
-	M.config.palette = false -- set false to prevent constant theme every time changing colorscheme via cmd
 
 	if vim.g.colors_name then
 		vim.cmd.highlight("clear")
@@ -60,12 +79,31 @@ function M.load(name)
 	if vim.fn.exists("syntax_on") then
 		vim.cmd.syntax("reset")
 	end
-	vim.o.termguicolors = M.config.termguicolors
-	vim.g.colors_name = name or "pastel"
 
-	M.colors = util.set_palettes(M.config.theme, M.config)
-	M.highlights = util.get_highlights(M.path, M.colors, M.config)
-	util.set_highlights(M.highlights, M.config)
+	vim.o.termguicolors = M.config.termguicolors
+	vim.g.colors_name = name
+
+	return theme
+end
+
+function M.load(name)
+	local opts = M.config
+	local theme = opts.palette
+
+	if not theme or priority == 0 then
+		if not name then
+			theme = theme or opts.background[vim.o.background]
+		else
+			theme = name
+		end
+	else
+		priority = 0
+	end
+
+	local util = require("pastel.lib.util")
+
+	theme = set_colorscheme(name, theme)
+	util.set_highlights(PATH, opts)
 
 	-- WARN: Experimental feature.
 	vim.schedule(function()
@@ -74,15 +112,14 @@ function M.load(name)
 		end
 
 		local ft = vim.bo.filetype
-		local ftopts = M.config.filetypes[ft]
+		local ftopts = opts.filetypes[ft]
 
 		if not next(ftopts or {}) then
 			return
 		end
 
-		local ftcolors = util.set_palettes(M.config.theme, ftopts)
-		local ft_highlights = util.get_highlights(M.path, ftcolors, ftopts)
-		util.set_highlights(ft_highlights, ftopts)
+		ftopts.theme = theme
+		util.set_highlights(PATH, ftopts)
 	end)
 end
 

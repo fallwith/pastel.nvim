@@ -7,7 +7,7 @@ local c = {
 
 c.red    = "#D94A38"
 c.orange = "#F29C38"
-c.yellow = "#E6C34A"
+c.yellow = "#DCAA4A"
 c.green  = "#7FB069"
 c.cyan   = "#6DB8B5"
 c.blue   = "#6C8FD8"

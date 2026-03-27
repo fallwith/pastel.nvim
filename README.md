@@ -17,8 +17,6 @@ A modern Neovim colorscheme plugin featuring beautifully crafted pastel themes w
 
 ### 🎨 Palettes
 
-Check all palettes on [VimColorschemes.com](https://vimcolorschemes.com/ankushbhagats/pastel.nvim)
-
 <details>
   <summary>pasteldark</summary>
     
@@ -59,6 +57,8 @@ Check all palettes on [VimColorschemes.com](https://vimcolorschemes.com/ankushbh
 </kbd>
 </details>
 
+Check more on [vimcolorschemes](https://vimcolorschemes.com/ankushbhagats/pastel.nvim)
+
 ---
 
 ### 📦 Installation
@@ -70,6 +70,7 @@ Install using your preferred plugin manager.
 ```lua
 {
   "ankushbhagats/pastel.nvim",
+  lazy = false, -- disable lazy loading 
   priority = 1000, -- load immediately at startup
   opts = {}, -- your configuration comes here
   config = true -- call setup function with provided opts
