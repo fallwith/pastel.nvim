@@ -4,7 +4,7 @@ Author: Ankush Bhagat
 License: GNU GPL v3
 
 ==============================================================================
-CONTENTS                                                   *pastel-contents*
+CONTENTS                                                   *pastel*
 
 1. Introduction................................|pastel-introduction|
 2. Features....................................|pastel-features|
@@ -36,7 +36,7 @@ plugin integrations, and flexible styling.
 
 2. FEATURES                                             *pastel-features*
 
-- 20 pastel colorschemes
+- Beautiful pastel color schemes
 - Automatic dark/light background switching
 - Built-in highlights for popular plugins
 - Fully customizable colors, highlights, and styles
