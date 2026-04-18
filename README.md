@@ -25,6 +25,25 @@ A modern Neovim colorscheme plugin featuring beautifully crafted pastel themes w
 </kbd>
 </details>
 
+
+<details>
+  <summary>pastelblack</summary>
+    
+<kbd>
+<img src="./src/pastelblack.jpg" />
+</kbd>
+</details>
+
+
+<details>
+  <summary>pastelsoft</summary>
+    
+<kbd>
+<img src="./src/pastelsoft.jpg" />
+</kbd>
+</details>
+
+
 <details>
   <summary>pastelrose</summary>
     
@@ -38,14 +57,6 @@ A modern Neovim colorscheme plugin featuring beautifully crafted pastel themes w
     
 <kbd>
 <img src="./src/pastelmint.jpg" />
-</kbd>
-</details>
-
-<details>
-  <summary>pastelsoft</summary>
-    
-<kbd>
-<img src="./src/pastelsoft.jpg" />
 </kbd>
 </details>
 
@@ -154,7 +165,7 @@ require("pastel").setup({
 
 ### 🎨 Available Color Schemes
 
-pasteldark pastelnight pastelsoft
+pasteldark pastelblack pastelsoft
 pastelfrost pastelrose pastelcloud
 pastelglow pastelshell pastelcool
 pastelgold pastelsilk pastelcream

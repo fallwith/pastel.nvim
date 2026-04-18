@@ -40,13 +40,13 @@ M.config = {
 M.palettes = {
 	-- Dark
 	pasteldark = "dark",
+  pastelblack = "dark",
 	pastelforest = "dark",
 	pastelmint = "dark",
 	pastelrose = "dark",
 	pastelcream = "dark",
 	pastelcool = "dark",
 	pastelfog = "dark",
-	pastelnight = "dark",
 	pastelpop = "dark",
 	pastelwarm = "dark",
 

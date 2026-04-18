@@ -5,7 +5,7 @@ local c = {
 
 -------------------------------------------------------------
 
-c.red    = "#F6B1B1"
+c.red    = "#FF9FB3"
 c.orange = "#F7D1AE"
 c.yellow = "#F6E7B6"
 c.green  = "#C7E6C7"

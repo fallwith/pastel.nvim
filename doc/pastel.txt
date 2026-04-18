@@ -252,7 +252,7 @@ Example: >
 Available colorschemes:
 
     pasteldark
-    pastelnight
+    pastelblack
     pastelsoft
     pastelfrost
     pastelrose
